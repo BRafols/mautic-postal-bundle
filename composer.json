@@ -14,8 +14,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=8.0.0",
-        "mautic/core-lib": "^5.0",
-        "symfony/serializer": "^5.3|^6.0,<6.4"
+        "mautic/core-lib": "^5.0"
     },
     "scripts": {
         "test": [

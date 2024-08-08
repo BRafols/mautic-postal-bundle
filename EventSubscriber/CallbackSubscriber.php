@@ -79,6 +79,10 @@ class CallbackSubscriber implements EventSubscriberInterface
     public function processCallbackRequest(TransportWebhookEvent $event): void
     {
 
+        $event->setResponse(new Response('Callback status by postal'));
+
+        return;
+
         try {
             $message = $this->validate($event->getRequest());
 
