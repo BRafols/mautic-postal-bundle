@@ -12,7 +12,6 @@ use Mautic\LeadBundle\Entity\DoNotContact;
 use MauticPlugin\PostalBundle\DTO\MessageBouncedEvent;
 use MauticPlugin\PostalBundle\DTO\MessageStatus;
 use MauticPlugin\PostalBundle\DTO\MessageStatusEvent;
-use MauticPlugin\PostalBundle\Mailer\Transport\SparkpostTransport;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +24,6 @@ class CallbackSubscriber implements EventSubscriberInterface
     public function __construct(
         private TransportCallback $transportCallback,
         private CoreParametersHelper $coreParametersHelper,
-        private SerializerInterface $serializer
     ) {
     }
 
@@ -106,9 +104,7 @@ class CallbackSubscriber implements EventSubscriberInterface
         $email = 'borjarafols@gmail.com';
         $this->transportCallback->addFailureByAddress($email, 'unsubscribed', DoNotContact::UNSUBSCRIBED);
         $event->setResponse(new Response('Callback processesd'));
-        if (SparkpostTransport::MAUTIC_SPARKPOST_API_SCHEME !== $dsn->getScheme()) {
-            return;
-        }
+       
 
         $payload = $event->getRequest()->request->all();
 
