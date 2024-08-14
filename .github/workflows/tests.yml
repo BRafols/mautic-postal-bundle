@@ -101,7 +101,18 @@ jobs:
         run: bin/php-cs-fixer fix ${{ env.PLUGIN_DIR }} --config=.php-cs-fixer.php -v --dry-run --show-progress=dots --diff
 
       - name: PHPSTAN
-        run: composer phpstan -- ${{ env.PLUGIN_DIR }}
+        run: |
+          # Step 1: Create a copy of phpstan.neon
+          cp phpstan.neon phpstan-temp.neon
+          
+          # Step 2: Echo phpVersion into the copied file
+          echo "parameters:\n    phpVersion: 80100" >> phpstan-temp.neon
+          
+          # Step 3: Run PHPStan using the modified configuration file
+          composer phpstan -- -c phpstan-temp.neon ${{ env.PLUGIN_DIR }}
+          
+          # Step 4: Remove the temporary configuration file
+          rm phpstan-temp.neon
 
       - name: Rector
         run: composer rector -- --dry-run --no-progress-bar ${{ env.PLUGIN_DIR }}

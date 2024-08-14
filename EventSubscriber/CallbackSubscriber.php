@@ -24,8 +24,6 @@ class CallbackSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private TransportCallback $transportCallback,
-        private CoreParametersHelper $coreParametersHelper,
-        private SerializerInterface $serializer,
         private MessageStatusEventCommentCreator $commentCreator,
     ) {
     }
@@ -65,7 +63,7 @@ class CallbackSubscriber implements EventSubscriberInterface
 
     private function handleMessageStatusEvent(MessageStatusEvent $message): void
     {
-        if (MessageStatus::HARD_FAIL === !$message->payload->status) {
+        if (MessageStatus::HARD_FAIL !== $message->payload->status) {
             return;
         }
 
