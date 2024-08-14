@@ -11,9 +11,6 @@ return static function (ContainerConfigurator $configurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $excludes = [
-        '{Config,Helper/SparkpostResponse.php,Mailer/Transport/SparkpostTransport.php}'
-    ];
     $services->load('MauticPlugin\\PostalBundle\\', '../')
-        ->exclude('../{'.implode(',', array_merge(MauticCoreExtension::DEFAULT_EXCLUDES, $excludes)).'}');
+        ->exclude('../{'.implode(',', array_merge(MauticCoreExtension::DEFAULT_EXCLUDES, [])).'}');
 };

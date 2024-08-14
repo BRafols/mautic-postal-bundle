@@ -7,8 +7,10 @@ namespace MauticPlugin\PostalBundle\DTO;
 class MessageBouncedEvent
 {
     public function __construct(
-        public Message $originalMessage,
-        public Message $bounce)
-    {
+        public string $event,
+        public float $timestamp,
+        public MessageBouncedEventPayload $payload,
+        public string $uuid
+    ) {
     }
 }

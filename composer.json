@@ -1,6 +1,6 @@
 {
     "name": "borjarafols/mautic-postal-bundle",
-    "description": "Sparkpost Mailer Plugin for Mautic",
+    "description": "Postal mailer plugin for Mautic",
     "type": "mautic-plugin",
     "license": "GPL-3.0-or-later",
     "keywords": [
@@ -13,7 +13,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=8.0.0",
+        "php": ">=8.1.0",
         "mautic/core-lib": "^5.0"
     },
     "scripts": {

@@ -8,7 +8,7 @@ on:
   pull_request:
 
 env:
-  PLUGIN_DIR: plugins/SparkpostBundle # Same as extra.install-directory-name in composer.json
+  PLUGIN_DIR: plugins/PostalBundle # Same as extra.install-directory-name in composer.json
 
 jobs:
   phpunit:
