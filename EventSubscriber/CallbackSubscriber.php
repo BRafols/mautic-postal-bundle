@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace MauticPlugin\PostalBundle\EventSubscriber;
 
 use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\SerializerInterface;
-use Mautic\CoreBundle\Helper\CoreParametersHelper;
 use Mautic\EmailBundle\EmailEvents;
 use Mautic\EmailBundle\Event\TransportWebhookEvent;
 use Mautic\EmailBundle\Model\TransportCallback;
